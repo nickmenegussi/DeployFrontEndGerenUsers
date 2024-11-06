@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db');
 
 // Adicionar um usuário
-router.post('/', (req, res) => {
+router.post('/usuarios', (req, res) => {
     const { nome, email } = req.body;
     const query = 'INSERT INTO usuarios (nome, email) VALUES (?, ?)';
 
@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
 });
 
 // Listar todos os usuários
-router.get('/', (req, res) => {
+router.get('/usuarios', (req, res) => {
     db.query('SELECT * FROM usuarios', (err, results) => {
         if (err) throw err;
         res.json(results);
